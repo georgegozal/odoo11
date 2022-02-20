@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="go_maps_action" model="ir.actions.act_window">
+        <field name="name">Go MAps</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">go.maps</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="try_go_maps">
+                Go Maps
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Form View-->
+    <record id="view_go_maps" model="ir.ui.view">
+        <field name="name">go.maps.form</field>
+        <field name="model">go.maps</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <!--<field name="address_direction_link" widget="link_button" text="მანძილის/გზის ჩვენება რუკაზე"/>-->
+                        <field name="address_direction_link" widget="url" text="მანძილის/გზის ჩვენება რუკაზე" readonly='1' force_save="1"/>
+                        <field name="address_longitude"/>
+                        <field name="address_latitude"/>
+                    </group>
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+        <!-- tree view-->
+    <record id="go_maps_tree" model="ir.ui.view">
+        <field name="name">go.maps.tree</field>
+        <field name="model">go.maps</field>
+        <field name="arch" type="xml">
+            <tree><!-- tree view -->
+                <field name="address_direction_link"/>
+                <field name="address_longitude" />
+                <field name="address_latitude"/>
+    
+            </tree>
+        </field>
+    </record>
+    
+
+    <menuitem
+        id="go_maps_root"
+        name="Go Maps"
+        sequence="10"/>
+
+
+    <menuitem
+    id="go_maps"
+    name="Go MAps"
+    parent='go_maps_root'
+    action="go_maps_action"
+    sequence="10"/>
+
+
+
+</odoo>
